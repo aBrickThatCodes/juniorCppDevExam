@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "../junioCppDevExam/main.cpp"
+#include "../junioCppDevExam/defs.cpp"
 #include <filesystem>
 #include <fstream>
 
@@ -41,7 +41,7 @@ TEST_F(DirectoryLineCountingTest, CountsLines) {
 }
 
 TEST_F(DirectoryLineCountingTest, HandlesEmptyFile) {
-	size_t size = 1;
+	size_t size = 0;
 	count_lines("empty.txt", size);
 	EXPECT_EQ(size, 0);
 }
@@ -57,4 +57,9 @@ TEST_F(DirectoryLineCountingTest, DirWithTwoFiles) {
 
 TEST_F(DirectoryLineCountingTest, RecursiveDir) {
 	EXPECT_EQ(count_lines_in_dir("doubleDir"), 5);
+}
+
+int main(int argc, char** argv) {
+	::testing::InitGoogleTest(&argc, argv);
+	return RUN_ALL_TESTS();
 }
